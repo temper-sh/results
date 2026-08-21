@@ -162,6 +162,20 @@ changed the intended file. Verification must reach the world outside the
 model's prose: inspect the diff, read the returned data, run the check, and
 confirm that the requested state actually exists.
 
+One editing tool was an almost perfect paper tiger. Instead of asking the model
+to repeat the old text around a change, it let the model identify lines with
+short hashes and send a compact replacement. The design made complete sense:
+fewer generated tokens, precise anchors, and less ambiguous matching should
+have meant faster, safer edits.
+
+In practice, the hash solved only where to edit. The model still had to
+reconstruct the fragile seam around the replacement—indentation, blank lines,
+and the exact bytes joining old code to new. Calls could be valid and accepted
+while the resulting file was wrong. The compact request saved work in the part
+that was easy to count, then returned the cost as inspection, retries, and
+correction. For this local workflow it was not a faster editing tool; it was a
+faster way to submit an edit that still needed policing.
+
 Fact-checking also applies to our own explanation. A measured correlation is
 not automatically a mechanism. A single success is not a reliability claim.
 An estimate is not a result. When the evidence cannot distinguish those
