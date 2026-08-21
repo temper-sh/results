@@ -1,0 +1,128 @@
+{
+  "schema": "temper-labs-live-integration/v1-draft",
+  "status": "pass",
+  "started_at": "2026-08-21T01:12:00Z",
+  "finished_at": "2026-08-21T01:26:45Z",
+  "machine": "Apple M5 / 32 GiB unified memory",
+  "runtime": {
+    "llama_swap": "v250 / 60226b6",
+    "llama_cpp": "b10470 / 34af94cd9",
+    "context_tokens": 102400,
+    "parallel_slots": 1,
+    "kv_k": "q8_0",
+    "kv_v": "q8_0",
+    "reasoning_effort": "medium",
+    "reasoning_budget": 1024,
+    "vision": true,
+    "speculation": false
+  },
+  "installed_config": {
+    "llama_swap_config_sha256": "813ecc4030e17e20139f5c83953a590ce968e5626d8acdc8cafd187156cb3e04",
+    "pi_models_sha256": "4e49202f2e8891e4b7c2c82c7334396602acafed750a30157ce3fcd47e3cc69b",
+    "pi_settings_sha256": "fe5204f85a4ade15be88f35c631f00f303c91565b3a4beb763c1c9564e75b664",
+    "pinned_group": {
+      "persistent": true,
+      "swap": true,
+      "exclusive": false,
+      "members": [
+        "qwen3.8-27b-gguf-24k",
+        "muse-glimmer-30b-vision"
+      ]
+    },
+    "pi_compaction": {
+      "reserve_tokens": 12800,
+      "keep_recent_tokens": 29866
+    }
+  },
+  "requests": [
+    {
+      "id": "muse-text-tiny-budget",
+      "requested_model": "muse-glimmer-30b-vision",
+      "max_tokens": 64,
+      "finish_reason": "length",
+      "visible_content": "empty",
+      "separated_reasoning": true,
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 64,
+        "cached_prompt_tokens": 0
+      },
+      "status": "expected-budget-caveat"
+    },
+    {
+      "id": "muse-text-normal-budget",
+      "requested_model": "muse-glimmer-30b-vision",
+      "max_tokens": 256,
+      "finish_reason": "stop",
+      "visible_exact": "MUSE_ROUTE_OK",
+      "separated_reasoning": true,
+      "usage": {
+        "prompt_tokens": 67,
+        "completion_tokens": 73,
+        "cached_prompt_tokens": 62
+      },
+      "status": "pass"
+    },
+    {
+      "id": "shared-wrapper-through-router",
+      "protocol": "openai-chat-live@0.3.0",
+      "status": "harness-incompatible-before-model-request",
+      "error": "JSONDecodeError on llama-swap plain-text /health response",
+      "counted_as_model_failure": false
+    },
+    {
+      "id": "muse-vision-cold-route",
+      "requested_model": "muse-glimmer-30b-vision",
+      "route": "llama-swap /v1/chat/completions",
+      "image_sha256": "117296bf0efe848df5848ab121bdec62655abde65ec446355f8af1c93ad0182e",
+      "finish_reason": "stop",
+      "required_facts": {
+        "Northstar Runbook": true,
+        "WATCH": true,
+        "128 MiB": true,
+        "Profile A": true
+      },
+      "visible_sha256": "16a6e75e18225d0a56dd6dd1c090dd91e1bf428afa2f3f88dc8c3447a222b702",
+      "reasoning_sha256": "2234bf78d44b43f629f1ff909d9f3bca70c156471629bc7278f7eee770712891",
+      "reasoning_characters": 553,
+      "elapsed_seconds_including_cold_load": 60.729176041,
+      "usage": {
+        "prompt_tokens": 1266,
+        "completion_tokens": 302,
+        "cached_prompt_tokens": 0
+      },
+      "status": "pass"
+    },
+    {
+      "id": "pi-cli-smoke",
+      "requested_model": "local/muse-glimmer-30b-vision",
+      "catalog": {
+        "context": "102.4K",
+        "max_output": "4.1K",
+        "reasoning": true,
+        "images": true
+      },
+      "visible_exact": "PI_MUSE_OK",
+      "status": "pass"
+    },
+    {
+      "id": "qwen-default-restored",
+      "requested_model": "qwen3.8-27b-gguf-24k",
+      "finish_reason": "stop",
+      "visible_exact": "QWEN_DEFAULT_RESTORED",
+      "usage": {
+        "prompt_tokens": 181,
+        "completion_tokens": 8,
+        "cached_prompt_tokens": 0
+      },
+      "running_after_request": [
+        "qwen3.8-27b-gguf-24k"
+      ],
+      "status": "pass"
+    }
+  ],
+  "resources": {
+    "swap_end_mib": 492,
+    "process_watcher": "not repeated; see linked 102400 direct-profile record"
+  }
+}

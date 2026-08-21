@@ -1,0 +1,17 @@
+profile	stage	metric	value	unit	status	note
+ug-text-base	protocol	openai_chat_live	pass	result	pass	separated reasoning required
+ug-text-base	context	meaningful_prompt	96165	prompt_tokens	pass	synthesis replay and reasoning-preserving branch
+ug-text-base	resources	peak_observed_rss	16.10	GiB	pass	swap remained 492 MiB
+ug-vision-100k	vision	required_facts	4/4	facts	pass	frozen incident dashboard
+ug-vision-100k	vision	prompt_speed	89.6004	tokens_per_second	pass	1266 prompt tokens
+ug-vision-100k	vision	decode_speed	7.8568	tokens_per_second	pass	302 completion tokens
+ug-vision-100k	resources	peak_observed_rss	17.405	GiB	pass	no swap growth or thermal stop
+ug-vision-live	integration	pi_request	pass	result	pass	PI_MUSE_OK
+ug-vision-live	integration	mutual_model_swap	pass	result	pass	one large model observed resident
+ug-vision-live	integration	cold_route_wall	60.729	seconds	pass	includes cold model load; 4/4 facts
+ug-role-medium	role_sampler	frozen_exact_score	6/12	tasks	fail	semantic-equivalent labels caused six misses
+ug-role-medium	role_sampler	posthoc_semantic_audit	12/12	tasks	directional	not a qualification score
+ug-role-medium	role_sampler	wall_time	589.153	seconds	complete	all 12 cases
+ug-role-high	role_sampler	wall_time	898.245	seconds	stopped	six cases only
+ug-text-dflash-n15	speculation	wall_delta	19.675	percent_slower	reject	three frozen tasks
+ug-text-dflash-n5	speculation	wall_delta	16.904	percent_slower	reject	three frozen tasks

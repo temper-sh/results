@@ -1,0 +1,43 @@
+{
+  "schema": "temper-labs-evidence/v1-draft",
+  "experiment_id": "qwen38-gguf-context-window",
+  "review_type": "migration-backfill",
+  "plan_status": "reconstructed-after-execution",
+  "state": "CLOSED",
+  "decision": "ADOPT",
+  "scope": {
+    "machine": "Apple M5 / 32 GiB witness 1",
+    "engine": "llama.cpp b10470 (34af94cd9)",
+    "artifact": "Qwen3.8-27B-Q4_K_M.gguf@f1bfb127c64f7072bdd2cad55f258b9c8b2910fe",
+    "profile": "one slot; Q8 KV; embedded MTP; 16 checkpoints; cache RAM zero"
+  },
+  "run_ids": [
+    "20260820-m5-32gb-llamacpp-context-ceiling"
+  ],
+  "decisive_evidence": {
+    "adopted_context_tokens": 131072,
+    "filled_prompt_tokens": 120190,
+    "replay_cached_tokens": 120186,
+    "replay_wall_seconds": 1.516,
+    "peak_observed_rss_gib": 23.20,
+    "swap_growth_mib": 0,
+    "first_failed_q8_mtp_context_tokens": 196608,
+    "desktop_oom_observed_at_failed_setting": true
+  },
+  "exclusions": [
+    "120k cold-fill wall time and aggregate prefill rate invalidated by laptop sleep",
+    "262k Q4-KV arm excluded from promotion because fill and KV quality were not evaluated"
+  ],
+  "source": {
+    "repository": "local-ai-setup",
+    "base_revision": "da9b070d1ba56a0d19e47588858e60b1a8e310c6",
+    "snapshot_state": "untracked working-tree source",
+    "summary_sha256": "f85791ef7b0b1e0bd3a030bf65eb7739b23471675dd26bf01c77951ec92828a0",
+    "raw_probe_logs_available": false
+  },
+  "reopen": [
+    "different Apple memory class",
+    "changed engine or artifact allocation behavior",
+    "controlled Q4-versus-Q8 KV quality qualification"
+  ]
+}

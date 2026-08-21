@@ -1,0 +1,52 @@
+{
+  "schema": "temper-labs-evidence/v1-draft",
+  "experiment_id": "qwen38-apple-engine-selection",
+  "review_type": "external-run-migration-and-decision-update",
+  "state": "CLOSED",
+  "decision": "ADOPT_DEFAULT",
+  "scope": "Apple M5 / 32 GiB witness 1",
+  "recommended_layouts": [
+    {
+      "id": "plain-q4km-128k",
+      "role": "speed-context",
+      "context_tokens": 131072,
+      "evidence_experiment": "qwen38-gguf-context-window"
+    },
+    {
+      "id": "dynamic-v3-xl-100k",
+      "role": "quality-first-live-selection",
+      "context_tokens": 102400,
+      "evidence_experiment": "qwen38-dynamic-quant-layout"
+    }
+  ],
+  "rapid_mlx_run": {
+    "run_id": "20260820-m5-32gb-rapid-mlx-closure",
+    "runtime": "Rapid-MLX 0.12.15; MLX 0.31.2; mlx-lm 0.31.3",
+    "target_revision": "3e6447f082e89cc7f0bc6e5441afd38dfce760ff",
+    "mtp_revision": "b643c01b6d3b094e325edb6ebd832e16c486c575",
+    "safe_context_tokens": 32768,
+    "safe_context_peak_gib": 20.669,
+    "target_only_decode_tok_s": 7.895,
+    "auto_k3_decode_tok_s": 11.016,
+    "auto_k3_unique_hashes_in_five": 3,
+    "fixed_k1_decode_tok_s": 10.597,
+    "fixed_k1_byte_parity": "5/5",
+    "fixed_k1_delta_vs_dynamic_xl_percent": 9.3,
+    "pi_sampling_activates_mtp": false,
+    "practical_tasks_passed": "1/4"
+  },
+  "invalid_or_excluded": [
+    "auto-K3 rejected for nondeterministic greedy outputs",
+    "40,960-token auto-K3 result is fragile capacity, not a recommended window",
+    "uncapped 102,400-advertisement control is invalid for the 32,768 profile",
+    "private transcripts are retained externally and not copied into Labs"
+  ],
+  "source": {
+    "repository": "local-ai-setup",
+    "base_revision": "da9b070d1ba56a0d19e47588858e60b1a8e310c6",
+    "snapshot_state": "untracked working-tree source",
+    "summary_sha256": "7998919b59b7718f02d015eb001f5c855bd4df1cf3a8d35e64d03fffc67703bc",
+    "source_ledger": "runs/20260820-m5-32gb-rapid-mlx-closure/source-artifacts.tsv"
+  },
+  "reopen": "maintained sampled-client lossless MTP plus the same 4/4 practical gate"
+}

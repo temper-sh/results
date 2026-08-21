@@ -1,0 +1,51 @@
+{
+  "schema": "temper-labs-evidence/v1-draft",
+  "experiment_id": "qwen38-dynamic-quant-layout",
+  "review_type": "migration-backfill",
+  "plan_status": "reconstructed-after-execution",
+  "state": "CLOSED",
+  "decision": "ADOPT",
+  "practical_meaning": "co-recommend Dynamic 3.0 XL for quality-first use and plain Q4_K_M for speed/context",
+  "scope": {
+    "machine": "Apple M5 / 32 GiB witness 1",
+    "engine": "llama.cpp b10470 (34af94cd9)",
+    "shared_profile": "one slot; 102400 context for A/B; Q8 KV; embedded MTP; 16 checkpoints; cache RAM zero; patched Sharp template; thinking off",
+    "control": "Qwen3.8-27B-Q4_K_M.gguf@f1bfb127c64f7072bdd2cad55f258b9c8b2910fe",
+    "candidate": "Qwen3.8-27B-UD-Q4_K_XL.gguf@4ca720788d1e01f1bff70c033e0d0028fd02e502"
+  },
+  "quality": {
+    "short_suite": {"control": "11/12", "candidate": "11/12"},
+    "practical_tasks": {"control": "4/4", "candidate": "4/4"},
+    "perplexity": {"control": 6.2871, "candidate": 6.2460, "candidate_delta_percent": -0.65},
+    "counterevidence": "candidate added a touching-range error inside the shared failed short task"
+  },
+  "performance": {
+    "controlled_decode_tok_s": {"control": 11.496, "candidate": 9.694, "candidate_delta_percent": -18.6},
+    "practical_total_seconds": {"control": 669.487, "candidate": 719.768},
+    "practical_tool_calls": {"control": 27, "candidate": 21}
+  },
+  "candidate_context_gate": {
+    "rendered_prompt_tokens": 100170,
+    "cold_prefill_tok_s": 39.84,
+    "total_wall_seconds": 2517.153,
+    "replay_wall_seconds": 2.816,
+    "cached_prompt_tokens": 100166,
+    "peak_rss_gib": 22.358,
+    "swap_growth_mib": 0,
+    "new_windowserver_oom": false
+  },
+  "source": {
+    "repository": "local-ai-setup",
+    "base_revision": "da9b070d1ba56a0d19e47588858e60b1a8e310c6",
+    "snapshot_state": "untracked working-tree source",
+    "summary_sha256": "e15296ed72d60b66d5995bf56d605396a13a72cfd96564a02e65f219fdf5f970",
+    "control_command_sha256": "35a1a1804d6a516b8225deaca6975d6ce63568c33c4c05f3cd1b6cfaf7a1d52b",
+    "raw_scored_logs_available": false
+  },
+  "reopen": [
+    "artifact or engine revision change",
+    "contradictory retained role-corpus evidence",
+    "safe higher-precision Dynamic profile",
+    "another-machine fit or speed witness"
+  ]
+}

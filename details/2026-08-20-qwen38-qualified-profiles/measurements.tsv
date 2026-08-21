@@ -1,0 +1,23 @@
+profile	stage	metric	value	unit	status	note
+plain-q4km	quality	short_suite	11/12	tasks	pass	missed code_merge_ranges
+dynamic-v3-xl	quality	short_suite	11/12	tasks	pass	same miss plus touching-range error
+plain-q4km	quality	practical_tasks	4/4	tasks	pass	27 tool calls; 669.487 seconds
+dynamic-v3-xl	quality	practical_tasks	4/4	tasks	pass	21 tool calls; 719.768 seconds
+plain-q4km	quality	paired_perplexity	6.2871	ppl	control	four 4096-token chunks
+dynamic-v3-xl	quality	paired_perplexity	6.2460	ppl	pass	0.65 percent below control
+plain-q4km	performance	controlled_decode	11.496	tokens_per_second	pass	matched 102400 profile
+dynamic-v3-xl	performance	controlled_decode	9.694	tokens_per_second	pass	15.7 percent below control; control is 18.6 percent above candidate
+plain-q4km	context	advertised_context	131072	tokens	supported	Q8 KV; embedded MTP
+plain-q4km	context	long_prompt	120190	prompt_tokens	pass	cold timing excluded after laptop sleep
+plain-q4km	context	exact_replay	1.516	seconds	pass	120186 cached prompt tokens
+plain-q4km	resources	peak_observed_rss	23.20	GiB	pass	no swap growth
+dynamic-v3-xl	context	advertised_context	102400	tokens	supported	Q8 KV; embedded MTP
+dynamic-v3-xl	context	long_prompt	100170	prompt_tokens	pass	39.84 prompt tokens per second cold
+dynamic-v3-xl	context	exact_replay	2.816	seconds	pass	100166 cached prompt tokens
+dynamic-v3-xl	resources	peak_observed_rss	22.358	GiB	pass	no swap growth or new WindowServer OOM
+plain-q4km	upper_probe	first_failed_q8_mtp_context	196608	tokens	fail	inference and WindowServer Metal OOM
+plain-q4km	low_precision_probe	q4_kv_context	262144	tokens	unqualified	tiny answer only; no fill or KV quality gate
+rapid-mlx-fixed-k1	context	safe_context	32768	tokens	lab	20.669 GiB peak; no swap growth
+rapid-mlx-fixed-k1	performance	controlled_decode	10.597	tokens_per_second	pass	5/5 byte-identical to target-only
+rapid-mlx-fixed-k1	quality	practical_tasks	1/4	tasks	parked	Pi sampling did not engage MTP
+rapid-mlx-auto-k3	determinism	unique_hashes	3/5	hashes	reject	identical seeded greedy requests
